@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/users");
 const pdfDetailsRouter = require("./routes/pdfDetails");
+const accordionItemsRouter = require("./routes/accordionItems");
 const errorHandler = require("./middlewares/errorHandler");
 const app = express();
 //! Connect to mongodb
@@ -15,6 +16,8 @@ mongoose
 app.use(express.json()); //pass incoming json data from the user
 //!Routes
 app.use("/", pdfDetailsRouter);
+app.use("/", accordionItemsRouter);
+app.use("/", userRouter);
 //!error handler
 app.use(errorHandler);
 //! Start the server

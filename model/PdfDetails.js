@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const PdfDetailsSchema = new mongoose.Schema(
   {
+    heading: String,
     pdf: String,
     title: String,
   },

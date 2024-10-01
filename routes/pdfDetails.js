@@ -9,5 +9,6 @@ const router = express.Router();
 router.post("/api/pdfDetails/uploadFile", upload.single("file"), pdfDetailsCtrl.uploadFile);
 router.get("/api/pdfDetails/getFiles", pdfDetailsCtrl.getFiles);
 router.get("/api/pdfDetails/files/:filename", pdfDetailsCtrl.getFile);
+router.get("/api/pdfDetails/getFilesByHeading/:heading", pdfDetailsCtrl.getFilesByHeading);
 
 module.exports = router;
