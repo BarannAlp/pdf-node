@@ -37,6 +37,7 @@ const userCtrl = {
   //!Login
   login: asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+    console.log(email, password )
     //!Check if user email exists
     const user = await User.findOne({ email });
     console.log("user backend", user);
