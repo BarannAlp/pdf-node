@@ -58,6 +58,7 @@ const userCtrl = {
       id: user._id,
       email: user.email,
       username: user.username,
+      isAdmin:user.isAdmin
     });
   }),
   //!Profile
