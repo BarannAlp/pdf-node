@@ -34,6 +34,8 @@ const userCtrl = {
       id: userCreated.id,
     });
   }),
+
+  
   //!Login
   login: asyncHandler(async (req, res) => {
     const { email, password } = req.body;
