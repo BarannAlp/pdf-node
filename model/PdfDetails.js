@@ -3,8 +3,9 @@ const mongoose = require("mongoose");
 const PdfDetailsSchema = new mongoose.Schema(
   {
     heading: String,
-    pdf: String,
+    pdfUrl: String,
     title: String,
+    filePath:String
   },
   {
     timestamps: true,

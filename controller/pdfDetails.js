@@ -5,19 +5,17 @@ const fs = require("fs");
 
 const pdfDetailsCtrl = {
   uploadFile: asyncHandler(async (req, res) => {
-    const { title,heading } = req.body; // Access the title from req.body
-    const file = req.file; // Access the uploaded file from req.file
-
-    if (!file) {
-      return res.status(400).json({ status: "error", message: "No file uploaded" });
-    }
-
+    const { title,heading,pdfUrl,filePath } = req.body; // Access the title from req.body
+    console.log(pdfUrl)
+    console.log(title,heading)
+   
     try {
       // Save the PDF details to the database
       await pdfDetail.create({
         heading: heading,
         title: title,
-        pdf: file.filename, // Save the file name or path as needed
+        pdfUrl: pdfUrl,
+        filePath:filePath
       });
       
       res.status(200).json({ status: "ok", message: "File uploaded successfully" });
@@ -31,24 +29,6 @@ const pdfDetailsCtrl = {
     const { id } = req.params; // Get the file ID from the request parameters
   
     try {
-      // Find the record in the database
-      console.log(id)
-      const detail = await pdfDetail.findById(id); // Assuming you're using Mongoose
-  
-      if (!detail) {
-        return res.status(404).json({ status: "error", message: "File not found" });
-      }
-  
-      const filePath = path.join(__dirname, '..', 'uploads', detail.pdf); // Construct file path
-  
-      // Delete the file from the file system
-      fs.unlink(filePath, (err) => {
-        if (err) {
-          console.error('File deletion error:', err);
-          return res.status(500).json({ status: "error", message: "File deletion failed" });
-        }
-      });
-  
       // Delete the record from the database
       await pdfDetail.findByIdAndDelete(id);
   

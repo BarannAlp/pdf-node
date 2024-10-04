@@ -16,6 +16,7 @@ const corsOptions = {
 // Use CORS with the options
 const app = express();
 app.use(cors(corsOptions));
+app.use(express.json());
 
 //! Connect to mongodb
 mongoose
