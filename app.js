@@ -8,11 +8,10 @@ const cors = require('cors');
 
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // Allow only your React frontend
+  origin: ['http://localhost:3000', 'https://pdf-node-seven.vercel.app'], // Allow both local and your deployed frontend
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Add allowed headers
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
 };
-
 // Use CORS with the options
 const app = express();
 app.use(cors(corsOptions));
