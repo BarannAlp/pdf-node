@@ -38,11 +38,11 @@ const userCtrl = {
   
   //!Login
   login: asyncHandler(async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password } = req.body;S
     console.log(email, password )
     //!Check if user email exists
+    try {
     const user = await User.findOne({ email });
-    console.log("user backend", user);
     if (!user) {
       throw new Error("Invalid credentials");
     }
@@ -62,6 +62,11 @@ const userCtrl = {
       username: user.username,
       isAdmin:user.isAdmin
     });
+  } catch (error) {
+    console.error('Error fetching user:', error);
+    // Handle any potential errors with the query or other issues
+    return res.status(500).json({ message: 'Server error. Please try again later.' });
+}
   }),
   //!Profile
   profile: asyncHandler(async (req, res) => {
