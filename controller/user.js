@@ -38,7 +38,7 @@ const userCtrl = {
   
   //!Login
   login: asyncHandler(async (req, res) => {
-    const { email, password } = req.body;S
+    const { email, password } = req.body;
     console.log(email, password )
     //!Check if user email exists
     try {
