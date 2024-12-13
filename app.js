@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const userRouter = require("./routes/users");
 const pdfDetailsRouter = require("./routes/pdfDetails");
 const accordionItemsRouter = require("./routes/accordionItems");
+const pdfRoutes = require("./routes/pdfRoutes");
 const errorHandler = require("./middlewares/errorHandler");
 const cors = require('cors');
 
@@ -28,6 +29,7 @@ mongoose
 //! Middlewares
 app.use(express.json()); //pass incoming json data from the user
 //!Routes
+app.use("/", pdfRoutes);
 app.use("/", pdfDetailsRouter);
 app.use("/", accordionItemsRouter);
 app.use("/", userRouter);
